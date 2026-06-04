@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Card Browser Official Website</title>
+
+<meta name="description" content="Official website for Card Browser Windows App. Floating AI browser cards powered by native C++ and Microsoft WebView2.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#0f0f0f;
+    color:white;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+/* ========================================================= */
+/* HEADER */
+/* ========================================================= */
+
+header{
+    width:100%;
+    background:#111;
+    border-bottom:1px solid #222;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav{
+    max-width:1400px;
+    margin:auto;
+    padding:22px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+    color:#00ff88;
+    letter-spacing:1px;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+    flex-wrap:wrap;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-size:17px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00ff88;
+}
+
+/* ========================================================= */
+/* HERO */
+/* ========================================================= */
+
+.hero{
+    width:100%;
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px;
+
+    background:
+    radial-gradient(circle at top right,#00ff8830,transparent 35%),
+    radial-gradient(circle at bottom left,#00aaff20,transparent 35%),
+    #0f0f0f;
+}
+
+.hero-content{
+    max-width:1100px;
+}
+
+.hero h1{
+    font-size:72px;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.hero span{
+    color:#00ff88;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    color:#cccccc;
+    font-size:22px;
+}
+
+.download-btn{
+    display:inline-block;
+    margin-top:45px;
+    padding:18px 42px;
+    background:#00cc66;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.download-btn:hover{
+    background:#00ff88;
+    transform:translateY(-4px);
+}
+
+/* ========================================================= */
+/* GENERAL SECTIONS */
+/* ========================================================= */
+
+section{
+    padding:90px 20px;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:52px;
+    margin-bottom:55px;
+    color:#00ff88;
+}
+
+.about-box{
+    background:#151515;
+    border:1px solid #222;
+    border-radius:25px;
+    padding:50px;
+    width:100%;
+}
+
+.about-box p{
+    font-size:20px;
+    color:#cccccc;
+    margin-bottom:25px;
+}
+
+/* ========================================================= */
+/* FEATURES */
+/* ========================================================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.feature-card{
+    background:#151515;
+    border:1px solid #222;
+    border-radius:22px;
+    padding:35px;
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-5px);
+    border-color:#00ff88;
+}
+
+.feature-card h3{
+    margin-bottom:15px;
+    color:#00ff88;
+    font-size:24px;
+}
+
+.feature-card p{
+    color:#bbbbbb;
+    font-size:18px;
+}
+
+/* ========================================================= */
+/* CONTACT */
+/* ========================================================= */
+
+.contact-section{
+    background:#111;
+    border-top:1px solid #222;
+}
+
+.contact-box{
+    background:#151515;
+    border:1px solid #222;
+    border-radius:25px;
+    padding:50px;
+    width:100%;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.contact-item{
+    background:#111;
+    border:1px solid #222;
+    border-radius:18px;
+    padding:30px;
+}
+
+.contact-item h3{
+    color:#00ff88;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.contact-item p,
+.contact-item a{
+    color:#cccccc;
+    font-size:18px;
+    word-break:break-word;
+    text-decoration:none;
+}
+
+.contact-item a:hover{
+    color:#00ff88;
+}
+
+/* ========================================================= */
+/* DOWNLOAD */
+/* ========================================================= */
+
+.download-box{
+    text-align:center;
+}
+
+/* ========================================================= */
+/* FOOTER */
+/* ========================================================= */
+
+footer{
+    background:#0a0a0a;
+    border-top:1px solid #222;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer p{
+    color:#888;
+    font-size:16px;
+}
+
+/* ========================================================= */
+/* RESPONSIVE */
+/* ========================================================= */
+
+@media(max-width:1024px){
+
+.hero h1{
+    font-size:58px;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+.section-title{
+    font-size:44px;
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    text-align:center;
+}
+
+nav ul{
+    justify-content:center;
+}
+
+.hero{
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.download-btn{
+    width:100%;
+    max-width:320px;
+}
+
+.section-title{
+    font-size:36px;
+}
+
+.about-box,
+.contact-box{
+    padding:30px;
+}
+
+.about-box p{
+    font-size:18px;
+}
+
+.feature-card p{
+    font-size:17px;
+}
+
+.contact-item p,
+.contact-item a{
+    font-size:17px;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero h1{
+    font-size:34px;
+}
+
+.logo{
+    font-size:28px;
+}
+
+.section-title{
+    font-size:30px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ========================================================= -->
+<!-- HEADER -->
+<!-- ========================================================= -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+Card Browser
+</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#download">Download</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+Official Website for
+<br>
+<span>Card Browser</span>
+</h1>
+
+<p>
+Card Browser is a modern Windows desktop application built with native C++ and Microsoft WebView2 technology.
+The application allows users to open multiple AI websites inside independent floating browser cards for multitasking, productivity, and fast workflow management.
+</p>
+
+<a href="#" class="download-btn">
+Download Windows App
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ABOUT -->
+<!-- ========================================================= -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+About Card Browser
+</h2>
+
+<div class="about-box">
+
+<p>
+Card Browser is a lightweight Windows desktop application designed for users who work with multiple AI platforms at the same time.
+</p>
+
+<p>
+The application provides draggable floating browser cards that independently load AI services such as ChatGPT, Microsoft Copilot, Google Gemini, Claude, Grok, Meta AI, Qwen, Duck.ai, and other online platforms.
+</p>
+
+<p>
+Built fully in native Windows C++, Card Browser focuses on performance, multitasking, modern UI design, lightweight memory usage, and secure browsing.
+</p>
+
+<p>
+The software uses Microsoft Edge WebView2 technology to provide modern web compatibility while maintaining smooth desktop performance and fast responsiveness.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FEATURES -->
+<!-- ========================================================= -->
+
+<section id="features">
+
+<div class="container">
+
+<h2 class="section-title">
+Application Features
+</h2>
+
+<div class="features">
+
+<div class="feature-card">
+<h3>Floating Browser Cards</h3>
+<p>
+Open and manage multiple independent browser cards anywhere on your desktop.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>AI Website Integration</h3>
+<p>
+Quick access to major AI platforms from one lightweight desktop application.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>Native Windows Performance</h3>
+<p>
+Built in native C++ for fast startup speed and low memory usage.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>Secure Browsing</h3>
+<p>
+Includes navigation filtering and WebView2 security protections.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>Always-On-Top Workflow</h3>
+<p>
+Keep browser cards visible while working with other applications.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>Modern User Interface</h3>
+<p>
+Dark-mode interface designed for productivity and multitasking.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTACT -->
+<!-- ========================================================= -->
+
+<section class="contact-section" id="contact">
+
+<div class="container">
+
+<h2 class="section-title">
+Contact & Support
+</h2>
+
+<div class="contact-box">
+
+<div class="contact-grid">
+
+
+
+<div class="contact-item">
+<h3>Business Inquiries</h3>
+<p>
+olusolaayodeji5112@gmail.com
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Phone Number</h3>
+<p>
+6474745257
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Instagram</h3>
+<p>
+<a href="https://www.instagram.com/cardbrowser?igsh=bWdxbHprcmhocWV4" target="_blank">
+@cardbrowser
+</a>
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Platform</h3>
+<p>
+Microsoft Windows Desktop Application
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Technology</h3>
+<p>
+Native C++ • Win32 API • Microsoft WebView2
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Privacy</h3>
+<p>
+Card Browser does not directly collect personal browsing information from users.
+</p>
+</div>
+
+<div class="contact-item">
+<h3>Support Availability</h3>
+<p>
+Users can contact Card Browser support for technical assistance, questions, and business inquiries.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- DOWNLOAD -->
+<!-- ========================================================= -->
+
+<section id="download">
+
+<div class="container">
+
+<h2 class="section-title">
+Download
+</h2>
+
+<div class="about-box download-box">
+
+<p>
+Download the latest version of Card Browser for Microsoft Windows.
+</p>
+
+<br>
+
+<a href="#" class="download-btn">
+Download Installer
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer>
+
+<p>
+© 2026 Card Browser. All rights reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
